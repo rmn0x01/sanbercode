@@ -1,0 +1,53 @@
+.logo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 7%;
+
+}
+
+.logo img {
+  height: auto;
+  width: 100%;
+}
+
+.nav {
+  display: inline-block;
+  vertical-align: middle;
+  width: 90%;
+
+}
+li {
+  display: inline;
+}
+
+header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 99%;
+}
+
+body {
+    background-image: url(../img/pattern.jpg);
+  }
+
+section {
+  background-color: white;
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+
+}
+
+.featured {
+  margin: auto;
+  padding-top: 2%;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 1px;
+  background-color: black;
+  color: white;
+}

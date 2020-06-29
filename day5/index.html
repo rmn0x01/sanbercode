@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Latihan DOM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Mini Ecommerce</a>
+            <form class="form-inline" id="formItem" onsubmit="myFunction();return false;">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search"  id="keyword" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchItem">Search</button>
+            </form>
+            <button class="btn btn-primary" id="cart"><i class="fas fa-shopping-cart"></i>(0)</button>
+        </nav>
+        <div class="row" id="listBarang">
+            
+                
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        //Release 2 masih broken, logo cartnya ilang hehe
+        var timesClicked = 0;
+        function theFunction() {
+            timesClicked++;
+            document.getElementById("cart").innerHTML = timesClicked;
+        }
+        // Javascript
+        //Release 0+1
+        var items = [
+            ['001', 'Keyboard Logitek', 60000, 'Keyboard yang mantap untuk kantoran', 'logitek.jpg'], 
+            ['002', 'Keyboard MSI', 300000, 'Keyboard gaming MSI mekanik', 'msi.jpg'],
+            ['003', 'Mouse Genius', 50000, 'Mouse Genius biar lebih pinter', 'genius.jpeg'],
+            ['004', 'Mouse Jerry', 30000, 'Mouse yang disukai kucing', 'jerry.jpg']
+        ]
+        // document.getElementById("itemName").innerHTML = "Keyboard Logitek";
+        // document.getElementById("itemDesc").innerHTML = "Keyboard yang mantap untuk kantoran";
+        // document.getElementById("itemPrice").innerHTML = "60000";
+        // document.getElementById("myImage").src = "public/images/msi.jpg";
+
+        // var ajg = "";
+        // document.getElementById('formItem').onsubmit = function() { 
+        //     ajg = document.getElementById('keyword').value;
+        //     return false;
+        // };
+        // console.log(ajg);
+
+        const container = document.getElementById('listBarang');
+        var itemsLength = items.length;
+        for (var i=0; i< itemsLength; i++){
+            const card = document.createElement('div');
+            card.classList = 'card-body';
+            
+            const content = `
+            <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img id="myImage" src="public/images/${items[i][4]}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" id="itemName">${items[i][1]}</h5>
+                    <p class="card-text" id="itemDesc">${items[i][3]}</p>
+                    <p class="card-text" id="itemPrice" >Rp ${items[i][2]}</p>
+                    <a href="#" class="btn btn-primary" id="addCart" onclick="return theFunction();">Tambahkan ke keranjang</a>
+                </div>
+            </div>
+            `;
+            container.innerHTML += content;
+        }
+
+        function myFunction() {
+            document.getElementById('listBarang').innerHTML = "";
+            var input;
+            var items = [
+                ['001', 'Keyboard Logitek', 60000, 'Keyboard yang mantap untuk kantoran', 'logitek.jpg'], 
+                ['002', 'Keyboard MSI', 300000, 'Keyboard gaming MSI mekanik', 'msi.jpg'],
+                ['003', 'Mouse Genius', 50000, 'Mouse Genius biar lebih pinter', 'genius.jpeg'],
+                ['004', 'Mouse Jerry', 30000, 'Mouse yang disukai kucing', 'jerry.jpg']
+            ];
+            input = document.getElementById('keyword').value;
+            const container = document.getElementById('listBarang');
+            var itemsLength = items.length;
+            for (var i=0; i< itemsLength; i++){
+                if(items[i][1].includes(input)){
+                    const card = document.createElement('div');
+                    card.classList = 'card-body';
+                    
+                    const content = `
+                    <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img id="myImage" src="public/images/${items[i][4]}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" id="itemName">${items[i][1]}</h5>
+                            <p class="card-text" id="itemDesc">${items[i][3]}</p>
+                            <p class="card-text" id="itemPrice" >Rp ${items[i][2]}</p>
+                            <a href="#" class="btn btn-primary" id="addCart" onclick="return theFunction();">Tambahkan ke keranjang</a>
+                        </div>
+                    </div>
+                    `;
+                    container.innerHTML += content;
+                }
+            }
+            return false;
+        }
+        
+
+        
+
+    </script>
+    <!-- Component Card dari Bootstrap
+    <div class="card" style="width: 18rem;">
+            <img id="myImage" src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" id="itemName">Nama</h5>
+                <p class="card-text" id="itemDesc">Deskripsi barang</p>
+                <p class="card-text" id="itemPrice" >Rp Harga</p>
+                <a href="#" class="btn btn-primary" id="addCart">Tambahkan ke keranjang</a>
+            </div>
+        </div> -->
+</body>
+</html>
