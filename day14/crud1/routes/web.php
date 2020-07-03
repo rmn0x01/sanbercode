@@ -20,7 +20,9 @@ Route::get('/', function () {
 Route::get('/pertanyaan', 'PertanyaanController@index')->name('pertanyaan_index');
 Route::get('/pertanyaan/create', 'PertanyaanController@create')->name('pertanyaan_create');
 Route::get('/pertanyaan/{id}','PertanyaanController@detail')->name('pertanyaan_detail');
-
+Route::get('/pertanyaan/{id}/edit','PertanyaanController@edit')->name('pertanyaan_edit');
+Route::post('/pertanyaan/editProcess','PertanyaanController@editProcess')->name('pertanyaan_editprocess');
+Route::get('/pertanyaan/{id}/delete','PertanyaanController@delete')->name('pertanyaan_delete');
 
 Route::post('/pertanyaan', 'PertanyaanController@store')->name('pertanyaan_store');
 

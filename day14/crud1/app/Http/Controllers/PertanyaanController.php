@@ -35,4 +35,28 @@ class PertanyaanController extends Controller
         }
         return view('pertanyaan_detail',['pertanyaan'=>$pertanyaan]);
     }
+
+    public function edit($id){
+        $pertanyaan = Pertanyaan::where('id',$id)->first();
+        return view('pertanyaan_edit',['pertanyaan'=>$pertanyaan]);
+    }
+
+    public function editProcess(Request $request){
+        $judul = $request->judul;
+        $isi = $request->isi;
+        $id = $request->id;
+
+        $pertanyaan = Pertanyaan::find($id);
+        
+        $pertanyaan->judul =  $judul;
+        $pertanyaan->isi = $isi;
+        $pertanyaan->save();
+        return redirect()->route('pertanyaan_index');
+    }
+
+    public function delete($id){
+        $pertanyaan = Pertanyaan::find($id);
+        $pertanyaan->delete();
+        return redirect()->route('pertanyaan_index');
+    }
 }

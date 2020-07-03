@@ -4,6 +4,6 @@
 
 <ol>
     @foreach($list_pertanyaan as $pertanyaan)
-    <li><a href="/pertanyaan/{{$pertanyaan->id}}">{{ $pertanyaan->judul }}</a></li>
+    <li><a href="/pertanyaan/{{$pertanyaan->id}}">{{ $pertanyaan->judul }} [<a href="/pertanyaan/{{$pertanyaan->id}}/edit">edit </a>] [<a href="/pertanyaan/{{$pertanyaan->id}}/delete">delete </a>]  </a></li>
     @endforeach
 </ol>
